@@ -4,9 +4,10 @@ import ProductCard from '@/components/shared/ProductCard';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
-import { MapPin, Star, Clock, ArrowLeft, Heart } from 'lucide-react';
+import { MapPin, Star, Clock, ArrowLeft, Heart, Wrench, List } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 export default function StoreDetailPage({ params }: { params: { id: string } }) {
   const store: Store | undefined = mockStores.find(s => s.id === params.id);
@@ -49,13 +50,13 @@ export default function StoreDetailPage({ params }: { params: { id: string } }) 
           </div>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <div>
+          <div className="flex flex-col md:flex-row md:items-start justify-between">
+            <div className="flex-grow">
               <CardTitle className="text-3xl font-bold font-headline mb-1">{store.name}</CardTitle>
               <Badge variant="outline" className="mb-2">{store.category}</Badge>
               <CardDescription className="text-muted-foreground mb-3 max-w-2xl">{store.description}</CardDescription>
             </div>
-            <div className="text-sm text-muted-foreground space-y-1 md:text-right mt-4 md:mt-0">
+            <div className="text-sm text-muted-foreground space-y-1 md:text-right mt-4 md:mt-0 flex-shrink-0 md:pl-6">
               <div className="flex items-center md:justify-end">
                 <MapPin className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
                 <span>{store.location.address || 'Location not specified'}</span>
@@ -79,6 +80,27 @@ export default function StoreDetailPage({ params }: { params: { id: string } }) 
         </CardContent>
       </Card>
 
+      {store.servicesOffered && store.servicesOffered.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-semibold font-headline mb-4 flex items-center">
+            <Wrench className="h-6 w-6 mr-3 text-primary" />
+            Services Offered by {store.name}
+          </h2>
+          <Card className="shadow-lg">
+            <CardContent className="p-6">
+              <ul className="space-y-2">
+                {store.servicesOffered.map((service, index) => (
+                  <li key={index} className="flex items-center">
+                    <List className="h-4 w-4 mr-2 text-muted-foreground" /> 
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </section>
+      )}
+      <Separator />
       <section>
         <h2 className="text-2xl font-semibold font-headline mb-6">Products from {store.name}</h2>
         {storeProducts.length === 0 ? (

@@ -15,6 +15,8 @@ export interface Store {
   products?: Product[]; // Optional: if products are directly nested or fetched separately
   rating?: number;
   deliveryTime?: string; // e.g., "25-35 min"
+  servicesOffered?: string[]; // New: List of service names or IDs offered by the store
+  dataAiHint?: string;
 }
 
 export interface Product {
@@ -23,9 +25,11 @@ export interface Product {
   description?: string;
   price: number;
   imageUrl?: string;
-  storeId: string;
+  storeId: string; // Indicates which store sells this product
+  serviceProviderId?: string; // Optional: Indicates which service provider sells this product
   category?: string;
   quantity?: number; // For stock
+  dataAiHint?: string;
 }
 
 export interface ServiceProvider {
@@ -37,6 +41,8 @@ export interface ServiceProvider {
   rating?: number;
   imageUrl?: string;
   description?: string;
+  productsSold?: string[]; // New: List of product names or IDs sold by the provider
+  dataAiHint?: string;
 }
 
 export interface ServiceCategory {
@@ -44,6 +50,7 @@ export interface ServiceCategory {
   name: string;
   icon?: React.ComponentType<{ className?: string }>;
   imageUrl?: string; // Optional if using icon components
+  dataAiHint?: string;
 }
 
 export interface UserProfile {
