@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -6,7 +7,7 @@ import type { AIProductRecommendation } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2, Search } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PersonalizedSuggestionsSection() {
@@ -19,10 +20,10 @@ export default function PersonalizedSuggestionsSection() {
       setIsLoading(true);
       setError(null);
       try {
-        // Mock input for the AI flow
+        // Mock input for the AI flow - simulating a user with no past purchases
         const mockAIInput: PersonalizedProductRecommendationsInput = {
           userLocation: { latitude: 34.0522, longitude: -118.2437 }, // Los Angeles (example)
-          pastPurchases: ["Organic Apples", "Sourdough Bread", "Artisan Cheese"],
+          pastPurchases: [], // Empty past purchases to trigger "Search something to suggest"
           nearbyStores: [
             {
               storeName: "FreshMart Groceries",
@@ -35,10 +36,12 @@ export default function PersonalizedSuggestionsSection() {
           ],
         };
         const result = await getPersonalizedProductRecommendations(mockAIInput);
-        setRecommendations(result.recommendedProducts);
+        // Ensure result.recommendedProducts is always an array
+        setRecommendations(result.recommendedProducts || []);
       } catch (e) {
         console.error("Error fetching personalized recommendations:", e);
         setError("Could not load suggestions at this time.");
+        setRecommendations([]); // Ensure recommendations is an empty array on error
       } finally {
         setIsLoading(false);
       }
@@ -51,7 +54,7 @@ export default function PersonalizedSuggestionsSection() {
     return (
       <div className="py-8">
         <h2 className="text-2xl font-headline font-bold mb-6 text-center md:text-left">Just For You</h2>
-        <div className="flex items-center justify-center p-8 border rounded-lg bg-card">
+        <div className="flex items-center justify-center p-8 border rounded-lg bg-card min-h-[150px]">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
           <p className="ml-2 text-muted-foreground">Loading personalized suggestions...</p>
         </div>
@@ -63,7 +66,7 @@ export default function PersonalizedSuggestionsSection() {
     return (
       <div className="py-8">
         <h2 className="text-2xl font-headline font-bold mb-6 text-center md:text-left">Just For You</h2>
-        <div className="p-8 border rounded-lg bg-destructive/10 text-destructive text-center">
+        <div className="p-8 border rounded-lg bg-destructive/10 text-destructive text-center min-h-[150px] flex flex-col items-center justify-center">
           <p>{error}</p>
         </div>
       </div>
@@ -71,7 +74,16 @@ export default function PersonalizedSuggestionsSection() {
   }
 
   if (recommendations.length === 0) {
-    return null; // Or a message like "No suggestions available right now"
+    return (
+      <section className="py-8 md:py-12">
+        <h2 className="text-3xl font-headline font-bold mb-8 text-center md:text-left">Just For You</h2>
+        <div className="text-center py-10 px-6 border rounded-lg bg-card shadow-sm min-h-[150px] flex flex-col items-center justify-center">
+          <Search className="h-12 w-12 text-muted-foreground mb-4" />
+          <p className="text-lg text-muted-foreground mb-1">No suggestions right now.</p>
+          <p className="text-md text-muted-foreground">Search something to suggest!</p>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -85,7 +97,7 @@ export default function PersonalizedSuggestionsSection() {
                 <CardTitle className="text-lg font-semibold line-clamp-2 h-14">{productName}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">You might like this product based on your activity.</p>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">You might like this product based on your activity and local availability.</p>
                 <Button variant="outline" className="w-full" asChild>
                   <Link href={`/search?q=${encodeURIComponent(productName)}`}>
                     Find Product <ArrowRight className="ml-2 h-4 w-4" />
@@ -100,3 +112,4 @@ export default function PersonalizedSuggestionsSection() {
     </section>
   );
 }
+
