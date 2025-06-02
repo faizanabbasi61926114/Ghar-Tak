@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
@@ -27,7 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <CardContent className="p-4 flex-grow">
         <CardTitle className="text-lg font-headline mb-1 line-clamp-2 h-14">{product.name}</CardTitle>
         {product.category && <Badge variant="outline" className="text-xs mb-2">{product.category}</Badge>}
-        <p className="text-lg font-semibold text-primary">${product.price.toFixed(2)}</p>
+        <p className="text-lg font-semibold text-primary">PKR {product.price.toFixed(2)}</p>
       </CardContent>
       <CardFooter className="p-4 border-t">
         <Button variant="default" className="w-full">
