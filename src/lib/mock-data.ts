@@ -1,5 +1,5 @@
 import type { Store, Product, ServiceProvider, ServiceCategory, AIProductRecommendation } from './types';
-import { ShoppingCart, Wrench, Sparkles, Scissors, CarFront, Utensils, Shirt, Package, Cpu, Construction } from 'lucide-react';
+import { ShoppingCart, Wrench, Sparkles, Scissors, CarFront, Utensils, Shirt, Package, Cpu, Construction, Briefcase, Palette, Home, Leaf, GraduationCap, BugPlay, KeyRound } from 'lucide-react';
 
 export const mockServiceCategories: ServiceCategory[] = [
   { id: 'plumber', name: 'Plumbers', icon: Wrench, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'plumbing tools' },
@@ -8,6 +8,13 @@ export const mockServiceCategories: ServiceCategory[] = [
   { id: 'car_repair', name: 'Car Repair', icon: CarFront, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'car engine' },
   { id: 'tech_repair', name: 'Tech Repair', icon: Cpu, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'computer circuit' },
   { id: 'general_repair', name: 'General Repair', icon: Construction, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'tools hammer' },
+  { id: 'jobs', name: 'Jobs', icon: Briefcase, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'briefcase work' },
+  { id: 'beauty', name: 'Beauty Services', icon: Palette, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'makeup palette' },
+  { id: 'home_repair', name: 'Home Repair', icon: Home, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'house tools' },
+  { id: 'wellness', name: 'Wellness', icon: Leaf, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'spa wellness' },
+  { id: 'training', name: 'Training & Tutoring', icon: GraduationCap, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'education learning' },
+  { id: 'pest_control', name: 'Pest Control', icon: BugPlay, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'insect spray' },
+  { id: 'rental', name: 'Rentals', icon: KeyRound, imageUrl: 'https://placehold.co/100x100.png', dataAiHint: 'keys house' },
 ];
 
 export const mockStores: Store[] = [
@@ -130,6 +137,72 @@ export const mockServiceProviders: ServiceProvider[] = [
     description: 'All-around handyman for your home repair needs.',
     dataAiHint: "handyman tools"
   },
+  {
+    id: 'sp7',
+    name: 'Beauty Bliss Spa',
+    serviceCategory: 'beauty',
+    location: { lat: 34.0600, lng: -118.2500, address: 'Glamour Ave, LA' },
+    availability: 'Tue-Sun 10am-8pm',
+    rating: 4.9,
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Rejuvenating beauty treatments and spa services.',
+    dataAiHint: "spa beauty"
+  },
+  {
+    id: 'sp8',
+    name: 'FixIt Home Repairs',
+    serviceCategory: 'home_repair',
+    location: { lat: 34.0520, lng: -118.2550, address: 'Homestead Rd, LA' },
+    availability: 'Mon-Sat 9am-5pm',
+    rating: 4.6,
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Your go-to for all minor and major home repairs.',
+    dataAiHint: "home improvement"
+  },
+   {
+    id: 'sp9',
+    name: 'Zen Wellness Center',
+    serviceCategory: 'wellness',
+    location: { lat: 34.0580, lng: -118.2600, address: 'Tranquility Ln, LA' },
+    availability: 'Mon-Fri 10am-7pm, Sat 10am-4pm',
+    rating: 4.8,
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Yoga, meditation, and holistic wellness therapies.',
+    dataAiHint: "yoga meditation"
+  },
+  {
+    id: 'sp10',
+    name: 'LearnFast Tutors',
+    serviceCategory: 'training',
+    location: { lat: 34.0500, lng: -118.2650, address: 'Knowledge Park, LA' },
+    availability: 'Flexible hours, book online',
+    rating: 4.7,
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Personalized tutoring and professional training courses.',
+    dataAiHint: "books study"
+  },
+  {
+    id: 'sp11',
+    name: 'Bug Busters Inc.',
+    serviceCategory: 'pest_control',
+    location: { lat: 34.0450, lng: -118.2300, address: 'Exterminator Row, LA' },
+    availability: '24/7 Emergency Service',
+    rating: 4.5,
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Effective pest control solutions for homes and businesses.',
+    dataAiHint: "bug spray"
+  },
+  {
+    id: 'sp12',
+    name: 'EasyRentals Co.',
+    serviceCategory: 'rental',
+    location: { lat: 34.0620, lng: -118.2700, address: 'Rental Hub, LA' },
+    availability: 'Office: Mon-Fri 9am-6pm',
+    rating: 4.4,
+    imageUrl: 'https://placehold.co/600x400.png',
+    description: 'Rent tools, equipment, and party supplies with ease.',
+    dataAiHint: "tools equipment"
+  }
 ];
 
 export const mockAIRecommendations: AIProductRecommendation[] = [
