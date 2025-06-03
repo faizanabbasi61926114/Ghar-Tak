@@ -1,3 +1,4 @@
+
 import LocationDisplay from '@/components/shared/LocationDisplay';
 import SearchInput from '@/components/shared/SearchInput';
 import PersonalizedSuggestionsSection from '@/components/sections/PersonalizedSuggestionsSection';
@@ -12,8 +13,13 @@ export default function HomePage() {
     <div className="space-y-12">
       <section className="text-center py-8 md:py-12 bg-gradient-to-br from-primary/10 via-background to-background rounded-xl shadow-sm">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-headline font-extrabold mb-4 text-primary">
-            Welcome to Ghar Tak!
+          <div className="mb-4 inline-flex items-center justify-center">
+            <Link href="/" className="text-4xl md:text-5xl font-bold font-headline text-primary">
+              Ghar Tak
+            </Link>
+          </div>
+          <h1 className="text-3xl md:text-4xl font-headline font-extrabold mb-4 text-foreground/90">
+            Your One-Stop Local Hub
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
             Discover and order products & services from your neighborhood, delivered right to your doorstep.
