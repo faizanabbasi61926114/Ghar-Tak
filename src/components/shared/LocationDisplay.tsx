@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -8,31 +9,42 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function LocationDisplay() {
   const [location, setLocation] = useState<Location | null>(null);
+  const [displayAddress, setDisplayAddress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchLocation = () => {
     setLoading(true);
     setError(null);
-    if (!navigator.geolocation) {
-      setError('Geolocation is not supported by your browser.');
-      setLoading(false);
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        // For simplicity, we're not doing reverse geocoding here.
-        // In a real app, you'd convert lat/lng to an address.
-        setLocation({ lat: latitude, lng: longitude, address: `Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)}` });
+    
+    // Simulate fetching location and reverse geocoding
+    setTimeout(() => {
+      if (!navigator.geolocation) {
+        setError('Geolocation is not supported by your browser.');
         setLoading(false);
-      },
-      (err) => {
-        setError(`Error getting location: ${err.message}`);
-        setLoading(false);
+        return;
       }
-    );
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // In a real app, you'd use a reverse geocoding service here
+          // For now, we'll use a mock society name
+          const mockSocietyName = "Greenwood Society, Anytown"; 
+          setLocation({ lat: latitude, lng: longitude, address: mockSocietyName });
+          setDisplayAddress(mockSocietyName);
+          setLoading(false);
+        },
+        (err) => {
+          setError(`Error getting location: ${err.message}. Using default.`);
+          // Fallback to a default mock society name if geolocation fails
+          const defaultSocietyName = "Sunshine Apartments, Local City";
+          setLocation({ lat: 0, lng: 0, address: defaultSocietyName}); // Placeholder lat/lng
+          setDisplayAddress(defaultSocietyName);
+          setLoading(false);
+        }
+      );
+    }, 500); // Simulate network delay for geocoding
   };
 
   useEffect(() => {
@@ -51,19 +63,19 @@ export default function LocationDisplay() {
   return (
     <div className="flex items-center space-x-2 text-sm text-muted-foreground p-3 rounded-lg shadow-sm border bg-card">
       <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
-      {error && (
+      {error && !displayAddress && ( // Only show primary error if no address is displayed
         <div className="flex items-center space-x-2">
           <span className="text-destructive">{error}</span>
           <Button variant="outline" size="sm" onClick={fetchLocation}>Try Again</Button>
         </div>
       )}
-      {location && !error && (
+      {displayAddress && (
         <div className="flex items-center space-x-2">
-          <span>Your location: {location.address || `Lat: ${location.lat.toFixed(2)}, Lng: ${location.lng.toFixed(2)}`}</span>
+          <span>Location: {displayAddress}</span>
            <Button variant="ghost" size="sm" onClick={fetchLocation} className="text-primary hover:text-primary/80">Refresh</Button>
         </div>
       )}
-       {!location && !error && !loading && (
+       {!displayAddress && !error && !loading && ( // Should ideally not happen if fetchLocation always sets a displayAddress
          <div className="flex items-center space-x-2">
             <span>Could not determine location.</span>
             <Button variant="outline" size="sm" onClick={fetchLocation}>Detect Location</Button>
