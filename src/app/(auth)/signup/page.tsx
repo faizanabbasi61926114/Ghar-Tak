@@ -4,15 +4,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
 
 export default function SignUpPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md shadow-xl">
         <CardHeader className="text-center">
-           <Link href="/" className="mb-4 inline-flex items-center space-x-2 text-primary">
-            <ShoppingBag className="h-8 w-8" />
+           <Link href="/" className="mb-4 inline-flex items-center justify-center text-primary">
             <span className="text-2xl font-bold font-headline">Ghar Tak</span>
           </Link>
           <CardTitle className="text-2xl font-headline">Create Account</CardTitle>
