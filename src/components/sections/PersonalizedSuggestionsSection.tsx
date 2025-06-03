@@ -20,18 +20,18 @@ export default function PersonalizedSuggestionsSection() {
       setIsLoading(true);
       setError(null);
       try {
-        // Mock input for the AI flow - simulating a user with no past purchases
+        // Mock input for the AI flow - simulating a user in Karachi with no past purchases
         const mockAIInput: PersonalizedProductRecommendationsInput = {
-          userLocation: { latitude: 34.0522, longitude: -118.2437 }, // Los Angeles (example)
+          userLocation: { latitude: 24.8607, longitude: 67.0011 }, // Karachi, Pakistan
           pastPurchases: [], // Empty past purchases to trigger "Search something to suggest"
           nearbyStores: [
             {
-              storeName: "FreshMart Groceries",
-              products: ["Organic Apples", "Bananas", "Milk", "Sourdough Bread", "Artisan Cheese", "Imported Olives"],
+              storeName: "Imtiaz Super Market",
+              products: ["Shan Masala", "Tapal Danedar", "Olpers Milk", "Fresh Vegetables", "Basmati Rice"],
             },
             {
-              storeName: "Gourmet Corner",
-              products: ["Artisan Cheese", "Cold Brew Coffee", "Specialty Chocolates", "Imported Olives"],
+              storeName: "Hyperstar",
+              products: ["Imported Chocolates", "Electronics", "Home Appliances", "Clothing", "Bakery Items"],
             },
           ],
         };
@@ -112,4 +112,3 @@ export default function PersonalizedSuggestionsSection() {
     </section>
   );
 }
-

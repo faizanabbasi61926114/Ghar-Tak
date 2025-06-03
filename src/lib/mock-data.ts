@@ -1,3 +1,4 @@
+
 import type { Store, Product, ServiceProvider, ServiceCategory, AIProductRecommendation } from './types';
 import { ShoppingCart, Wrench, Sparkles, Scissors, CarFront, Utensils, Shirt, Package, Cpu, Construction, Briefcase, Palette, Home, Leaf, GraduationCap, BugPlay, KeyRound } from 'lucide-react';
 
@@ -20,196 +21,195 @@ export const mockServiceCategories: ServiceCategory[] = [
 export const mockStores: Store[] = [
   {
     id: 'store1',
-    name: 'FreshMart Groceries',
-    description: 'Your friendly neighborhood grocery store with fresh produce and daily essentials.',
-    location: { lat: 34.0522, lng: -118.2437, address: '123 Main St, Los Angeles' },
+    name: 'Karachi Fresh Mart',
+    description: 'Your friendly neighborhood grocery store with fresh produce and daily essentials in Karachi.',
+    location: { lat: 24.8607, lng: 67.0011, address: 'Shop 12, Clifton Block 4, Karachi' },
     category: 'Grocery',
     imageUrl: 'https://placehold.co/600x400.png',
     isFavorite: false,
     rating: 4.5,
-    deliveryTime: "20-30 min",
-    dataAiHint: "grocery store"
+    deliveryTime: "25-35 min",
+    dataAiHint: "grocery store Karachi"
   },
   {
     id: 'store2',
-    name: 'TechHub Electronics',
-    description: 'Latest gadgets and accessories. Your one-stop tech shop.',
-    location: { lat: 34.0550, lng: -118.2450, address: '456 Tech Ave, Los Angeles' },
+    name: 'Lahore Tech Central',
+    description: 'Latest gadgets and accessories in Lahore. Your one-stop tech shop.',
+    location: { lat: 31.5820, lng: 74.3294, address: 'Shop 5, Hafeez Center, Lahore' },
     category: 'Electronics',
     imageUrl: 'https://placehold.co/600x400.png',
     isFavorite: true,
     rating: 4.8,
-    deliveryTime: "30-45 min",
+    deliveryTime: "30-40 min",
     servicesOffered: ['Smartphone Screen Repair', 'Laptop Diagnostics'],
-    dataAiHint: "electronics shop"
+    dataAiHint: "electronics shop Lahore"
   },
   {
     id: 'store3',
-    name: 'Speedy Eats',
-    description: 'Quick and delicious meals delivered to your doorstep.',
-    location: { lat: 34.0500, lng: -118.2400, address: '789 Foodie Ln, Los Angeles' },
+    name: 'Islamabad Quick Bites',
+    description: 'Quick and delicious meals delivered to your doorstep in Islamabad.',
+    location: { lat: 33.7379, lng: 73.0844, address: 'Unit 3, F-10 Markaz, Islamabad' },
     category: 'Restaurant',
     imageUrl: 'https://placehold.co/600x400.png',
     isFavorite: false,
     rating: 4.2,
-    deliveryTime: "15-25 min",
-    dataAiHint: "restaurant food"
+    deliveryTime: "20-30 min",
+    dataAiHint: "restaurant food Islamabad"
   },
 ];
 
 export const mockProducts: Product[] = [
-  { id: 'prod1', name: 'Organic Apples', price: 3.99, storeId: 'store1', category: 'Produce', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "apples fruit" },
-  { id: 'prod2', name: 'Whole Milk Gallon', price: 4.50, storeId: 'store1', category: 'Dairy', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "milk carton" },
-  { id: 'prod3', name: 'Wireless Headphones', price: 79.99, storeId: 'store2', category: 'Audio', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "headphones audio" },
-  { id: 'prod4', name: 'Smartphone Charger', price: 19.99, storeId: 'store2', category: 'Accessories', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "charger cable" },
-  { id: 'prod5', name: 'Chicken Burger', price: 12.50, storeId: 'store3', category: 'Burgers', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "burger food" },
-  { id: 'prod6', name: 'Veggie Pizza', price: 15.00, storeId: 'store3', category: 'Pizza', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "pizza food" },
-  { id: 'prod7', name: 'Universal Pipe Wrench', price: 25.00, serviceProviderId: 'sp1', category: 'Tools', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "wrench tool" },
-  { id: 'prod8', name: 'Screen Protector Kit', price: 15.00, serviceProviderId: 'sp5', category: 'Accessories', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "screen protector" },
+  { id: 'prod1', name: 'Organic Mangoes (Sindhri)', price: 250, storeId: 'store1', category: 'Produce', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "mangoes fruit" },
+  { id: 'prod2', name: 'Fresh Milk (1 Litre)', price: 180, storeId: 'store1', category: 'Dairy', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "milk carton" },
+  { id: 'prod3', name: 'Wireless Earbuds', price: 3500, storeId: 'store2', category: 'Audio', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "earbuds audio" },
+  { id: 'prod4', name: 'Mobile Charger (Fast Charge)', price: 1200, storeId: 'store2', category: 'Accessories', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "charger cable" },
+  { id: 'prod5', name: 'Chicken Tikka Burger', price: 450, storeId: 'store3', category: 'Burgers', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "burger tikka" },
+  { id: 'prod6', name: 'Seekh Kabab Pizza', price: 950, storeId: 'store3', category: 'Pizza', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "pizza kabab" },
+  { id: 'prod7', name: 'Pipe Wrench (10 inch)', price: 800, serviceProviderId: 'sp1', category: 'Tools', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "wrench tool" },
+  { id: 'prod8', name: 'Mobile Screen Protector', price: 300, serviceProviderId: 'sp5', category: 'Accessories', imageUrl: 'https://placehold.co/300x200.png', dataAiHint: "screen protector" },
 ];
 
 export const mockServiceProviders: ServiceProvider[] = [
   {
     id: 'sp1',
-    name: 'Mike\'s Plumbing',
+    name: 'Ahmed Plumbing Services',
     serviceCategory: 'plumber',
-    location: { lat: 34.0530, lng: -118.2440, address: 'Plumber Central, LA' },
-    availability: 'Mon-Sat 8am-6pm',
+    location: { lat: 24.8600, lng: 67.0100, address: 'Saddar, Karachi' },
+    availability: 'Mon-Sat 9am-7pm',
     rating: 4.7,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Expert plumbing services for residential and commercial properties.',
-    productsSold: ['Universal Pipe Wrench', 'Drain Cleaner'],
-    dataAiHint: "plumber tools"
+    description: 'Expert plumbing services for residential and commercial properties in Karachi.',
+    productsSold: ['Pipe Wrench (10 inch)', 'Drain Cleaner Liquid'],
+    dataAiHint: "plumber tools Karachi"
   },
   {
     id: 'sp2',
-    name: 'Sparkle Clean Co.',
+    name: 'Lahore Sparkle Cleaners',
     serviceCategory: 'cleaner',
-    location: { lat: 34.0560, lng: -118.2460, address: 'Cleaning Hub, LA' },
+    location: { lat: 31.5700, lng: 74.3300, address: 'Gulberg III, Lahore' },
     availability: 'Available 24/7',
     rating: 4.9,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Professional cleaning services for homes and offices.',
-    dataAiHint: "cleaning supplies"
+    description: 'Professional cleaning services for homes and offices in Lahore.',
+    dataAiHint: "cleaning supplies Lahore"
   },
   {
     id: 'sp3',
-    name: 'Chic Cuts Salon',
+    name: 'Faisalabad Style Salon',
     serviceCategory: 'hairdresser',
-    location: { lat: 34.0490, lng: -118.2390, address: 'Style Street, LA' },
-    availability: 'Tue-Sun 10am-7pm',
+    location: { lat: 31.4187, lng: 73.0791, address: 'Peoples Colony, Faisalabad' },
+    availability: 'Tue-Sun 11am-8pm',
     rating: 4.6,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Trendy haircuts and styling by experienced professionals.',
-    dataAiHint: "hair salon"
+    description: 'Trendy haircuts and styling by experienced professionals in Faisalabad.',
+    dataAiHint: "hair salon Faisalabad"
   },
   {
     id: 'sp4',
-    name: 'AutoFix Masters',
+    name: 'Rawalpindi Auto Care',
     serviceCategory: 'car_repair',
-    location: { lat: 34.0510, lng: -118.2500, address: 'Garage Town, LA' },
-    availability: 'Mon-Fri 9am-5pm',
+    location: { lat: 33.5651, lng: 73.0169, address: 'Saddar, Rawalpindi' },
+    availability: 'Mon-Fri 9am-6pm',
     rating: 4.4,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Reliable car repair and maintenance services.',
-    dataAiHint: "car mechanic"
+    description: 'Reliable car repair and maintenance services in Rawalpindi.',
+    dataAiHint: "car mechanic Rawalpindi"
   },
   {
     id: 'sp5',
-    name: 'Gadget Gurus',
+    name: 'Islamabad Gadget Fix',
     serviceCategory: 'tech_repair',
-    location: { lat: 34.0580, lng: -118.2480, address: 'Tech Repair Plaza, LA' },
-    availability: 'Mon-Sat 10am-7pm',
+    location: { lat: 33.7200, lng: 73.0600, address: 'Blue Area, Islamabad' },
+    availability: 'Mon-Sat 10am-8pm',
     rating: 4.8,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Expert repairs for phones, laptops, and tablets.',
-    productsSold: ['Screen Protector Kit', 'USB-C Cable'],
-    dataAiHint: "tech repair shop"
+    description: 'Expert repairs for phones, laptops, and tablets in Islamabad.',
+    productsSold: ['Mobile Screen Protector', 'USB-C Cable (Durable)'],
+    dataAiHint: "tech repair shop Islamabad"
   },
   {
     id: 'sp6',
-    name: 'HandyPro Services',
+    name: 'Multan Handyman Solutions',
     serviceCategory: 'general_repair',
-    location: { lat: 34.0470, lng: -118.2350, address: 'Home Repair Hub, LA' },
+    location: { lat: 30.1575, lng: 71.5249, address: 'Cantt, Multan' },
     availability: 'Mon-Fri 9am-6pm',
     rating: 4.5,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'All-around handyman for your home repair needs.',
-    dataAiHint: "handyman tools"
+    description: 'All-around handyman for your home repair needs in Multan.',
+    dataAiHint: "handyman tools Multan"
   },
   {
     id: 'sp7',
-    name: 'Beauty Bliss Spa',
+    name: 'Karachi Beauty Lounge',
     serviceCategory: 'beauty',
-    location: { lat: 34.0600, lng: -118.2500, address: 'Glamour Ave, LA' },
+    location: { lat: 24.8800, lng: 67.0300, address: 'Bahadurabad, Karachi' },
     availability: 'Tue-Sun 10am-8pm',
     rating: 4.9,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Rejuvenating beauty treatments and spa services.',
-    dataAiHint: "spa beauty"
+    description: 'Rejuvenating beauty treatments and spa services in Karachi.',
+    dataAiHint: "spa beauty Karachi"
   },
   {
     id: 'sp8',
-    name: 'FixIt Home Repairs',
+    name: 'Lahore HomeFix Pros',
     serviceCategory: 'home_repair',
-    location: { lat: 34.0520, lng: -118.2550, address: 'Homestead Rd, LA' },
+    location: { lat: 31.5600, lng: 74.3400, address: 'DHA Phase 5, Lahore' },
     availability: 'Mon-Sat 9am-5pm',
     rating: 4.6,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Your go-to for all minor and major home repairs.',
-    dataAiHint: "home improvement"
+    description: 'Your go-to for all minor and major home repairs in Lahore.',
+    dataAiHint: "home improvement Lahore"
   },
    {
     id: 'sp9',
-    name: 'Zen Wellness Center',
+    name: 'Islamabad Zen Center',
     serviceCategory: 'wellness',
-    location: { lat: 34.0580, lng: -118.2600, address: 'Tranquility Ln, LA' },
+    location: { lat: 33.7100, lng: 73.0500, address: 'F-7 Markaz, Islamabad' },
     availability: 'Mon-Fri 10am-7pm, Sat 10am-4pm',
     rating: 4.8,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Yoga, meditation, and holistic wellness therapies.',
-    dataAiHint: "yoga meditation"
+    description: 'Yoga, meditation, and holistic wellness therapies in Islamabad.',
+    dataAiHint: "yoga meditation Islamabad"
   },
   {
     id: 'sp10',
-    name: 'LearnFast Tutors',
+    name: 'Karachi Tutors Academy',
     serviceCategory: 'training',
-    location: { lat: 34.0500, lng: -118.2650, address: 'Knowledge Park, LA' },
+    location: { lat: 24.8900, lng: 67.0500, address: 'Gulshan-e-Iqbal, Karachi' },
     availability: 'Flexible hours, book online',
     rating: 4.7,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Personalized tutoring and professional training courses.',
-    dataAiHint: "books study"
+    description: 'Personalized tutoring and professional training courses in Karachi.',
+    dataAiHint: "books study Karachi"
   },
   {
     id: 'sp11',
-    name: 'Bug Busters Inc.',
+    name: 'Lahore Pest Control Experts',
     serviceCategory: 'pest_control',
-    location: { lat: 34.0450, lng: -118.2300, address: 'Exterminator Row, LA' },
+    location: { lat: 31.5500, lng: 74.3200, address: 'Model Town, Lahore' },
     availability: '24/7 Emergency Service',
     rating: 4.5,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Effective pest control solutions for homes and businesses.',
-    dataAiHint: "bug spray"
+    description: 'Effective pest control solutions for homes and businesses in Lahore.',
+    dataAiHint: "bug spray Lahore"
   },
   {
     id: 'sp12',
-    name: 'EasyRentals Co.',
+    name: 'Islamabad Rental Solutions',
     serviceCategory: 'rental',
-    location: { lat: 34.0620, lng: -118.2700, address: 'Rental Hub, LA' },
+    location: { lat: 33.7000, lng: 73.0400, address: 'G-9 Markaz, Islamabad' },
     availability: 'Office: Mon-Fri 9am-6pm',
     rating: 4.4,
     imageUrl: 'https://placehold.co/600x400.png',
-    description: 'Rent tools, equipment, and party supplies with ease.',
-    dataAiHint: "tools equipment"
+    description: 'Rent tools, equipment, and party supplies with ease in Islamabad.',
+    dataAiHint: "tools equipment Islamabad"
   }
 ];
 
 export const mockAIRecommendations: AIProductRecommendation[] = [
-  "Artisan Coffee Beans",
-  "Local Honey",
-  "Handmade Soap",
-  "Gourmet Cheese Selection",
-  "Craft Beer Pack"
+  "Freshly Baked Naan",
+  "Local Spices Mix",
+  "Handcrafted Ajrak",
+  "Dates from Khairpur",
+  "Peshawari Chappal"
 ];
-
