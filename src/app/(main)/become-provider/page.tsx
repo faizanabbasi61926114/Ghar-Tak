@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -50,25 +51,31 @@ export default function BecomeProviderPage() {
             Submit Application
           </Button>
         </CardContent>
-        <CardFooter className="text-sm text-muted-foreground">
+        <CardFooter className="flex flex-col space-y-2 items-center text-sm text-muted-foreground">
           <p>By applying, you agree to our <Link href="/terms-of-service" className="underline hover:text-primary">Terms for Providers</Link>.</p>
+          <p>
+            Already have a provider account?{" "}
+            <Link href="/auth/signin" className="font-medium text-primary hover:underline">
+              Sign In
+            </Link>
+          </p>
         </CardFooter>
       </Card>
 
       <section className="mt-16 text-center">
         <h2 className="text-2xl font-headline font-semibold mb-6">Why Partner with Ghar Tak?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center p-4 rounded-lg bg-card border">
             <Store className="h-12 w-12 text-accent mb-3" />
             <h3 className="text-lg font-semibold mb-1">Reach More Customers</h3>
             <p className="text-muted-foreground text-sm">Expand your reach in your local community and connect with new customers.</p>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center p-4 rounded-lg bg-card border">
             <Briefcase className="h-12 w-12 text-accent mb-3" />
             <h3 className="text-lg font-semibold mb-1">Easy Management</h3>
             <p className="text-muted-foreground text-sm">Manage your listings, orders, and bookings through our simple platform.</p>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center p-4 rounded-lg bg-card border">
             <CheckCircle className="h-12 w-12 text-accent mb-3" />
             <h3 className="text-lg font-semibold mb-1">Grow Your Business</h3>
             <p className="text-muted-foreground text-sm">Leverage our marketing and tools to increase your sales and service bookings.</p>
