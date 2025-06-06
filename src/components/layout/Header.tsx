@@ -1,7 +1,8 @@
+
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { UserCircle, Menu } from 'lucide-react';
+import { UserCircle, Menu, Briefcase } from 'lucide-react'; // Added Briefcase for Provider Dashboard
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
@@ -61,6 +62,12 @@ export default function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/profile">Profile</Link>
                 </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                  <Link href="/provider/dashboard" className="flex items-center">
+                    <Briefcase className="mr-2 h-4 w-4" /> Provider Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link href="/auth/signin">Sign In</Link>
                 </DropdownMenuItem>
@@ -90,6 +97,14 @@ export default function Header() {
                       {link.label}
                     </Link>
                   ))}
+                   <DropdownMenuSeparator />
+                    <Link href="/profile" className="text-muted-foreground hover:text-foreground">Profile</Link>
+                    <Link href="/provider/dashboard" className="text-muted-foreground hover:text-foreground flex items-center">
+                       <Briefcase className="mr-2 h-4 w-4" /> Provider Dashboard
+                    </Link>
+                    <Link href="/auth/signin" className="text-muted-foreground hover:text-foreground">Sign In</Link>
+                    <Link href="/auth/signup" className="text-muted-foreground hover:text-foreground">Sign Up</Link>
+
                 </div>
               </SheetContent>
             </Sheet>
