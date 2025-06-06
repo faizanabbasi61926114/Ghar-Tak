@@ -14,6 +14,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggleButton } from '@/components/shared/ThemeToggleButton';
 
+// Placeholder SVG Logo
+const LogoSvg = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6 text-primary">
+    <rect x="3" y="6" width="18" height="12" rx="3" />
+  </svg>
+);
+
 export default function Header() {
   const navLinks = [
     { href: "/services", label: "Services" },
@@ -26,6 +33,7 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center">
+            <LogoSvg />
             <span className="font-bold font-headline">Ghar Tak</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -89,6 +97,7 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="left" className="pr-0">
                 <Link href="/" className="flex items-center mb-6 px-4">
+                  <LogoSvg />
                   <span className="font-bold font-headline">Ghar Tak</span>
                 </Link>
                 <div className="flex flex-col space-y-2 px-4">
