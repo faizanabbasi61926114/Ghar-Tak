@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <h3 className="font-headline text-lg font-semibold mb-3 text-primary">Ghar Tak</h3>
             <p className="text-muted-foreground">
-              Instant Delivery & Local Services at Your Doorstep.
+              Instant Delivery & Local Services at Your Doorstep
             </p>
             <p className="text-muted-foreground mt-2">
               &copy; {currentYear} Ghar Tak All rights reserved
@@ -28,6 +28,7 @@ export default function Footer() {
               <Link href="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
               <Link href="/stores" className="text-muted-foreground hover:text-primary">Stores</Link>
               <Link href="/services" className="text-muted-foreground hover:text-primary">Services</Link>
+              <Link href="/support" className="text-muted-foreground hover:text-primary">Support</Link>
               <Link href="/become-provider" className="text-muted-foreground hover:text-primary">Become a Provider</Link>
             </nav>
           </div>
