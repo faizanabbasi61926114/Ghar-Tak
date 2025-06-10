@@ -50,7 +50,15 @@ const prompt = ai.definePrompt({
   name: 'personalizedProductRecommendationsPrompt',
   input: {schema: PersonalizedProductRecommendationsInputSchema},
   output: {schema: PersonalizedProductRecommendationsOutputSchema},
-  prompt: `You are a personal shopping assistant. You will generate a list of product recommendations based on the user's location, past purchases, and nearby stores.
+  prompt: `You are a personal shopping assistant for a hyperlocal delivery app in Pakistan called "Ghar Tak". Your goal is to provide relevant product recommendations.
+
+You are given the user's current location, a list of their past purchases, and a list of nearby stores along with some products they offer.
+
+Based on this information, suggest up to 5 product names that the user might be interested in.
+- Prioritize items that are commonly needed or popular in a Pakistani household context if past purchases are empty.
+- If past purchases exist, try to find complementary items or items from similar categories available in nearby stores.
+- Consider the types of products typically sold in the nearby stores.
+- Do not suggest products that are not likely to be available in the provided nearby stores.
 
 User Location: Latitude: {{{userLocation.latitude}}}, Longitude: {{{userLocation.longitude}}}
 Past Purchases:
@@ -62,13 +70,12 @@ Past Purchases:
 Nearby Stores:
 {{#if nearbyStores}}
   {{#each nearbyStores}}
-- Store Name: {{{storeName}}}, Products: {{#each products}}{{{this}}}, {{/each}}\n  {{/each}}
+- Store Name: {{{storeName}}}, Products: {{#each products}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}\n  {{/each}}
 {{else}}
   No nearby stores found.
 {{/if}}
 
-
-Based on this information, what products would you recommend? Return a JSON array of product names. Limit the list to 5 products.
+Recommend products that would be genuinely useful or appealing to a user in Pakistan. If no relevant products can be determined from the context (e.g., no nearby stores or products, and no past purchases to go by), return an empty array for recommendedProducts.
 `,
 });
 
@@ -80,6 +87,7 @@ const personalizedProductRecommendationsFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    return output!;
+    // Ensure that recommendedProducts is always an array, even if the LLM fails to provide it or provides null
+    return { recommendedProducts: output?.recommendedProducts || [] };
   }
 );

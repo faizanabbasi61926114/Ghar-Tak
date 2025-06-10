@@ -8,15 +8,25 @@ import MapPlaceholder from '@/components/shared/MapPlaceholder';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+// Placeholder SVG Logo
+const LogoSvg = () => (
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-8 w-8 text-primary">
+    <rect x="3" y="6" width="18" height="12" rx="3" />
+  </svg>
+);
+
+
 export default function HomePage() {
   return (
     <div className="space-y-12">
       <section className="text-center py-8 md:py-12 bg-gradient-to-br from-primary/10 via-background to-background rounded-xl shadow-sm">
         <div className="container mx-auto px-4">
-          {/* Logo removed from here */}
-          <h1 className="text-4xl md:text-5xl font-headline font-extrabold mb-4 text-primary">
-            Ghar Tak
-          </h1>
+          <div className="flex justify-center items-center mb-3">
+            <LogoSvg />
+            <h1 className="text-4xl md:text-5xl font-headline font-extrabold text-primary">
+              Ghar Tak
+            </h1>
+          </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
             Your One-Stop Local Hub. Discover and order products & services from your neighborhood, delivered right to your doorstep.
           </p>
