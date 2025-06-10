@@ -1,6 +1,8 @@
+
 import type { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import ChatbotWidget from '@/components/shared/ChatbotWidget'; // Import the ChatbotWidget
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -14,6 +16,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         {children}
       </main>
       <Footer />
+      <ChatbotWidget /> {/* Add ChatbotWidget here */}
     </div>
   );
 }
