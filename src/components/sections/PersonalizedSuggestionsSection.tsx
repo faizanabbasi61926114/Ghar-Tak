@@ -20,19 +20,23 @@ export default function PersonalizedSuggestionsSection() {
       setIsLoading(true);
       setError(null);
       try {
-        // Mock input for the AI flow - simulating a user in Karachi with no past purchases
+        // Mock input for the AI flow - simulating a user in Jubilee Town, Lahore
         const mockAIInput: PersonalizedProductRecommendationsInput = {
-          userLocation: { latitude: 24.8607, longitude: 67.0011 }, // Karachi, Pakistan
-          pastPurchases: [], // Empty past purchases to trigger "Search something to suggest"
+          userLocation: { latitude: 31.4500, longitude: 74.2900 }, // Approx Jubilee Town, Lahore
+          pastPurchases: ["Basmati Rice", "Cooking Oil"], // Example past purchases
           nearbyStores: [
             {
-              storeName: "Imtiaz Super Market",
-              products: ["Shan Masala", "Tapal Danedar", "Olpers Milk", "Fresh Vegetables", "Basmati Rice"],
+              storeName: "Al-Fatah Liberty",
+              products: ["Imported Groceries", "Electronics", "Clothing", "Bakery Items", "Perfumes"],
             },
             {
-              storeName: "Hyperstar",
-              products: ["Imported Chocolates", "Electronics", "Home Appliances", "Clothing", "Bakery Items"],
+              storeName: "Jalal Sons Main Market",
+              products: ["Fresh Naan", "Mithai", "Dairy Products", "Frozen Foods", "Snacks"],
             },
+             {
+              storeName: "Lahore Tech Central (Mock)", // Referencing a mock store
+              products: ["Mobile Chargers", "Headphones", "Laptop Sleeves", "Power Banks"],
+            }
           ],
         };
         const result = await getPersonalizedProductRecommendations(mockAIInput);
@@ -80,7 +84,7 @@ export default function PersonalizedSuggestionsSection() {
         <div className="text-center py-10 px-6 border rounded-lg bg-card shadow-sm min-h-[150px] flex flex-col items-center justify-center">
           <Search className="h-12 w-12 text-muted-foreground mb-4" />
           <p className="text-lg text-muted-foreground mb-1">No suggestions right now.</p>
-          <p className="text-md text-muted-foreground">Search something to suggest!</p>
+          <p className="text-md text-muted-foreground">Search something to suggest or enable location!</p>
         </div>
       </section>
     );

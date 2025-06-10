@@ -29,8 +29,8 @@ export default function LocationDisplay() {
         (position) => {
           const { latitude, longitude } = position.coords;
           // In a real app, you'd use a reverse geocoding service here
-          // For now, we'll use a mock society name
-          const mockSocietyName = "DHA Phase 6, Karachi"; 
+          // For now, we'll use a mock society name reflecting Lahore
+          const mockSocietyName = "Jubilee Town, Lahore"; 
           setLocation({ lat: latitude, lng: longitude, address: mockSocietyName });
           setDisplayAddress(mockSocietyName);
           setLoading(false);
@@ -38,8 +38,8 @@ export default function LocationDisplay() {
         (err) => {
           setError(`Error getting location: ${err.message}. Using default.`);
           // Fallback to a default mock society name if geolocation fails
-          const defaultSocietyName = "Gulberg III, Lahore";
-          setLocation({ lat: 31.5204, lng: 74.3587, address: defaultSocietyName}); // Default to Lahore if geolocation fails
+          const defaultSocietyName = "Jubilee Town, Lahore";
+          setLocation({ lat: 31.4500, lng: 74.2900, address: defaultSocietyName}); // Approx coords for Jubilee Town
           setDisplayAddress(defaultSocietyName);
           setLoading(false);
         }
